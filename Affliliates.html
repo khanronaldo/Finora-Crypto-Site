@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINORA Affiliate Program</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-black: #050505;
+            --surface-dark: #0a0a0a;
+            --surface-glass: rgba(255, 255, 255, 0.03);
+            
+            /* Platinum / Elite Color Scheme */
+            --primary-platinum: #E5E4E2;
+            --platinum-gradient: linear-gradient(135deg, #ffffff 0%, #c0c0c0 50%, #8a8a8a 100%);
+            --platinum-hover: #ffffff;
+            --gold-accent: #d4af37; /* Subtle gold for premium feel */
+            
+            --text-main: #ffffff;
+            --text-dim: #a3a3a3; /* Silver-ish Gray */
+            --border-color: #333333;
+            
+            --font-main: 'Inter', sans-serif;
+            --font-heading: 'Outfit', sans-serif;
+            --section-padding: 120px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.5;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- BACKGROUND PARTICLES & BLUR (Jugnoo Effect) --- */
+        .background-fx {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .blur-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(20, 20, 20, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+            backdrop-filter: blur(2px); /* Halka sa parda */
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            animation: float-particle linear infinite;
+        }
+
+        @keyframes float-particle {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.6; }
+            50% { transform: translate(100px, -100px) rotate(180deg); opacity: 0.3; }
+            80% { opacity: 0.6; }
+            100% { transform: translate(-50px, -200px) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- ANIMATION CLASSES (Replay on Scroll) --- */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal-element.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--platinum-gradient);
+            color: #000;
+            border: none;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+            background: #fff;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 14px 40px;
+        }
+
+        .btn-secondary:hover {
+            border-color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+
+        /* 1. HERO SECTION */
+        .hero {
+            position: relative;
+            height: 90vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 70%;
+            height: 100%;
+            z-index: -1;
+            filter: grayscale(100%) contrast(1.1); /* Platinum Look */
+            opacity: 0.6;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, #000 35%, transparent 85%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 72px;
+            font-weight: 600;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            /* Platinum Text Effect */
+            background: linear-gradient(to bottom, #ffffff, #999999);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-dim);
+            max-width: 480px;
+            margin-bottom: 40px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+        }
+
+        /* 2. AFFILIATE ADVANTAGE SECTION */
+        .advantage {
+            padding: var(--section-padding) 0;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 400;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            letter-spacing: 0.02em;
+            background: linear-gradient(to right, #ffffff, #a0a0a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-header p {
+            color: var(--text-dim);
+            font-size: 18px;
+            max-width: 800px;
+        }
+
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .feature-block {
+            border: 1px solid transparent;
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+        
+        .feature-block:hover {
+            border-color: rgba(255,255,255,0.1);
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), transparent);
+        }
+
+        .feature-block .icon {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 24px;
+            color: var(--primary-platinum);
+            filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
+        }
+
+        .feature-block h3 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .feature-block p {
+            color: var(--text-dim);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* 3. REWARDS YOU EARN SECTION */
+        .rewards {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        /* Subtle glow behind table */
+        .rewards::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .table-container {
+            margin-top: 60px;
+            background: rgba(13, 13, 13, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+        }
+
+        /* Table Header Groupings */
+        .table-header-groups th {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .header-card-box {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
+            border-radius: 8px 8px 0 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-bottom: none;
+        }
+
+        .header-card-box span {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: 500;
+            line-height: 1.2;
+            color: #fff;
+        }
+        
+        .header-card-box svg rect {
+            fill: #444; /* Silver/Grey Card */
+        }
+
+        .points-box {
+            background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(50,50,50,0.3) 100%);
+            border-radius: 8px 8px 0 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-bottom: none;
+        }
+
+        .points-box span {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        /* Column labels */
+        .label-row th {
+            color: #fff;
+            font-weight: 600;
+            font-size: 13px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(255,255,255,0.05);
+            text-transform: uppercase;
+        }
+
+        .label-row th:first-child { width: 80px; }
+
+        .table-row:last-child td {
+            border-bottom: none;
+        }
+
+        .table-row td {
+            color: var(--text-dim);
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+        
+        .table-row:hover td {
+            color: #fff;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .table-row td:first-child, 
+        .table-row td:nth-child(2) {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Plus Strip */
+        .plus-strip {
+            background: linear-gradient(90deg, #1a1a1a 0%, #050505 100%);
+            border-top: 1px solid #333;
+            padding: 24px 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plus-strip::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 400px;
+            height: 100%;
+            /* Platinum shimmer pattern */
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
+            opacity: 0.5;
+        }
+
+        .plus-circle {
+            width: 40px;
+            height: 40px;
+            background: var(--platinum-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 24px;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+
+        .plus-text {
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .plus-text span {
+            color: var(--text-dim);
+            font-weight: 400;
+            margin-left: 8px;
+        }
+
+        /* 4. FROM REFERRAL TO REVENUE SECTION */
+        .revenue {
+            padding: var(--section-padding) 0;
+        }
+
+        .revenue h2 {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 300;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+            background: linear-gradient(to right, #ffffff, #a0a0a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .revenue-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .step-block .icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 24px;
+            color: #fff;
+        }
+
+        .step-block h3 {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .step-block p {
+            color: var(--text-dim);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* 5. JOIN A NETWORK SECTION */
+        .network {
+            padding: var(--section-padding) 0;
+        }
+
+        .network-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .network-image {
+            width: 100%;
+            aspect-ratio: 1 / 0.85;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .network-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%); /* Platinum style */
+            transition: transform 0.8s ease;
+        }
+        
+        .network-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .network-content h2 {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 300;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(to right, #ffffff, #a0a0a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .network-content > p {
+            color: var(--text-dim);
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .bullet-list {
+            list-style: none;
+            margin-bottom: 48px;
+        }
+
+        .bullet-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+            font-size: 16px;
+        }
+
+        .bullet-item b {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .bullet-item .check-icon {
+            color: var(--primary-platinum);
+            margin-top: 4px;
+            flex-shrink: 0;
+            filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
+        }
+
+        .network-btns {
+            display: flex;
+            gap: 16px;
+        }
+
+        /* 6. RESOURCES / FAQ SECTION */
+
+    </style>
+</head>
+<body>
+
+    <div class="background-fx" id="particles-js">
+        <div class="blur-overlay"></div>
+        </div>
+
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=2000" alt="Premium Lifestyle Hero">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="reveal-element">Your FINORA Affiliate Journey Starts Here</h1>
+                <p class="reveal-element">Your voice has power — we want the world to hear it. Earn cash rewards when your referrals deposit and spend on FINORA.</p>
+                <div class="hero-btns reveal-element">
+                    <a href="DownloadFinoraApp.html" class="btn btn-primary">Get Started</a>
+                    <a href="DownloadFinoraApp.html" class="btn btn-secondary">Login</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="advantage">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="reveal-element">The FINORA Affiliate Advantage</h2>
+                <p class="reveal-element">Built for creators, founders, and innovators ready to convert influence into income — and earn for as long as your referrals stay active.</p>
+            </div>
+            <div class="advantage-grid">
+                <div class="feature-block reveal-element">
+                    <div class="icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3>Earn on every action</h3>
+                    <p>Get paid for your referrals' card spends, deposits, and transactions.</p>
+                </div>
+                <div class="feature-block reveal-element">
+                    <div class="icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                    </div>
+                    <h3>Lifetime commissions</h3>
+                    <p>You keep earning — long after the first click. Recurring income from every active user.</p>
+                </div>
+                <div class="feature-block reveal-element">
+                    <div class="icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    </div>
+                    <h3>Tiered bonuses</h3>
+                    <p>The better your performance, the higher your commission tier and rewards.</p>
+                </div>
+                <div class="feature-block reveal-element">
+                    <div class="icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path></svg>
+                    </div>
+                    <h3>Real-time dashboard</h3>
+                    <p>Track referrals, conversions, and earnings instantly — all in one place.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rewards">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="reveal-element">REWARDS YOU EARN</h2>
+                <p class="reveal-element">Your performance drives your profit — powered by FINORA. Earn cash commissions and bonuses every time your referrals activate their card or transact; the more volume they generate, the more you earn.</p>
+            </div>
+            <div class="table-container reveal-element">
+                <table>
+                    <thead class="table-header-groups">
+                        <tr>
+                            <th colspan="2"></th> <th colspan="3">
+                                <div class="header-card-box">
+                                    <span>STANDARD<br>CARDS</span>
+                                    <svg width="100" height="60" viewBox="0 0 100 60"><rect width="80" height="50" rx="4" fill="#a0a0a0" transform="translate(0,5)"/><rect width="80" height="50" rx="4" fill="#E5E4E2" transform="translate(10,0)"/><path d="M15 10 h10v10h-10z" fill="#999"/></svg>
+                                </div>
+                            </th>
+                            <th colspan="2">
+                                <div class="header-card-box" style="background: linear-gradient(135deg, rgba(212,175,55,0.2) 0%, rgba(212,175,55,0.05) 100%); border-color: rgba(212,175,55,0.3);">
+                                    <span style="color: #f0e68c;">PREMIUM &<br>LUXE CARDS</span>
+                                    <svg width="100" height="60" viewBox="0 0 100 60"><rect width="80" height="50" rx="4" fill="#9e8a4a" transform="translate(0,5)"/><rect width="80" height="50" rx="4" fill="#d4af37" transform="translate(10,0)"/></svg>
+                                </div>
+                            </th>
+                            <th colspan="3">
+                                <div class="points-box">
+                                    <span>FINORA POINTS FOR<br>AFFILIATES</span>
+                                    <svg class="trophy-icon" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1"><path d="M8 21h8M12 17v4M7 4h10M17 4v8a5 5 0 01-10 0V4M3 9c0-1.5 1.5-3 3-3M21 9c0-1.5-1.5-3-3-3"/></svg>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <thead class="label-row">
+                        <tr>
+                            <th>Level</th>
+                            <th>Referred transacting users</th>
+                            <th>Total card spend <br><small>(> $100 per account)</small></th>
+                            <th>Purchased physical card</th>
+                            <th>Card transaction</th>
+                            <th>Purchased physical card</th>
+                            <th>Card transaction</th>
+                            <th>Level 1 points</th>
+                            <th>Level 2 points</th>
+                            <th>Premium card bonus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-row">
+                            <td>Level 1</td>
+                            <td>5</td>
+                            <td>$8</td>
+                            <td>20%</td>
+                            <td>0.10%</td>
+                            <td>5%</td>
+                            <td>0.10%</td>
+                            <td>30%</td>
+                            <td>6%</td>
+                            <td>5,000 FINORA points</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td>Level 2</td>
+                            <td>50</td>
+                            <td>$10</td>
+                            <td>50%</td>
+                            <td>0.20%</td>
+                            <td>10%</td>
+                            <td>0.20%</td>
+                            <td>30%</td>
+                            <td>6%</td>
+                            <td>5,000 FINORA points</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td>Level 3</td>
+                            <td>100</td>
+                            <td>$10</td>
+                            <td>60%</td>
+                            <td>0.25%</td>
+                            <td>10%</td>
+                            <td>0.25%</td>
+                            <td>30%</td>
+                            <td>6%</td>
+                            <td>5,000 FINORA points</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td>Level 4</td>
+                            <td>500</td>
+                            <td>$10</td>
+                            <td>80%</td>
+                            <td>0.35%</td>
+                            <td>15%</td>
+                            <td>0.35%</td>
+                            <td>30%</td>
+                            <td>6%</td>
+                            <td>5,000 FINORA points</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="plus-strip">
+                    <div class="plus-circle">+</div>
+                    <div class="plus-text">
+                        PLUS <span>Earn an additional 10% from Tier 2 commissions (referral earnings of those you've referred).</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="revenue">
+        <div class="container">
+            <h2 class="reveal-element">FROM REFERRAL TO REVENUE</h2>
+            <div class="revenue-grid">
+                <div class="step-block reveal-element">
+                    <div class="icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg>
+                    </div>
+                    <h3>Join</h3>
+                    <p>Sign up in minutes and get your unique affiliate link.</p>
+                </div>
+                <div class="step-block reveal-element">
+                    <div class="icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+                    </div>
+                    <h3>Share</h3>
+                    <p>Invite your audience to download and use FINORA with your link.</p>
+                </div>
+                <div class="step-block reveal-element">
+                    <div class="icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h3>Earn</h3>
+                    <p>Get instant USDC commissions for verified signups and transactions.</p>
+                </div>
+                <div class="step-block reveal-element">
+                    <div class="icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <h3>Level Up</h3>
+                    <p>The more users you bring, the more rewards you unlock with FINORA.</p>
+                </div>
+            </div>
+            <a href="DownloadFinoraApp.html" class="btn btn-primary reveal-element" style="padding: 18px 48px;">Get Started</a>
+        </div>
+    </section>
+
+    <section class="network">
+        <div class="container">
+            <div class="network-inner">
+                <div class="network-image reveal-element">
+                    <img src="assets/contents/lambp.png" alt="Founder using app">
+                </div>
+                <div class="network-content">
+                    <h2 class="reveal-element">JOIN A NETWORK THAT GROWS WITH YOU</h2>
+                    <p class="reveal-element">The FINORA Affiliate Program is built for people who see beyond the ordinary - those who turn belief into action. It's perfect for:</p>
+                    <ul class="bullet-list reveal-element">
+                        <li class="bullet-item">
+                            <span class="check-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l3 3l7 -7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            <span><b>Creators</b> who know their influence has value.</span>
+                        </li>
+                        <li class="bullet-item">
+                            <span class="check-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l3 3l7 -7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            <span><b>Community builders</b> who love connecting people and ideas.</span>
+                        </li>
+                        <li class="bullet-item">
+                            <span class="check-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l3 3l7 -7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            <span><b>Crypto believers</b> who want to be part of what's next.</span>
+                        </li>
+                    </ul>
+                    <div class="network-btns reveal-element">
+                        <a href="DownloadFinoraApp.html" class="btn btn-primary">Get Started</a>
+                        <a href="DownloadFinoraApp.html" class="btn btn-secondary">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section class="move-money-section">
+    <style>
+        /* --- CSS STYLES --- */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap');
+
+        .move-money-section {
+            padding: 80px 24px;
+            background: #000; /* Dark Background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Ambient Glow Background */
+        .move-money-section::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 243, 255, 0.15) 0%, rgba(0,0,0,0) 70%);
+            filter: blur(80px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Glass Card Container */
+        .mm-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 48px;
+            padding: 60px;
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2 Columns */
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        /* --- Left Side: Content --- */
+        .mm-content h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.1;
+            color: #fff;
+            margin: 0 0 24px 0;
+            letter-spacing: 1px;
+        }
+
+        /* Shiny Platinum Text Gradient */
+        .text-platinum {
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 40%, #ffffff 60%, #a0a0a0 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 5s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .mm-content p {
+            color: #9ca3af;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 450px;
+        }
+
+        .mm-content strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Button Styling */
+        .mm-btn {
+            display: inline-block;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+            font-family: 'Orbitron', sans-serif;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mm-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4);
+            background: #f0f0f0;
+        }
+
+        /* --- Right Side: Image --- */
+        .mm-image-box {
+            position: relative;
+            height: 450px;
+            border-radius: 32px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .mm-image-box:hover {
+            transform: perspective(1000px) rotateY(0deg) scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+        }
+
+        .mm-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Image Overlay Gradient */
+        .mm-image-box::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            pointer-events: none;
+        }
+
+        /* --- Responsive (Mobile) --- */
+        @media (max-width: 991px) {
+            .mm-card {
+                grid-template-columns: 1fr; /* Stack vertically */
+                padding: 40px 24px;
+                border-radius: 32px;
+                gap: 40px;
+            }
+
+            .mm-content h2 {
+                font-size: 32px;
+            }
+
+            .mm-image-box {
+                height: 300px;
+                transform: none; /* No 3D on mobile */
+            }
+            
+            .mm-image-box:hover {
+                transform: none;
+            }
+        }
+    </style>
+
+    <div class="mm-card">
+        
+        <div class="mm-content">
+            <h2>
+                Finora Rewards <br>
+                <span class="text-platinum">Believers</span>
+            </h2>
+            <p>
+                <strong>Ready</strong> to help build the new world economy?
+            </p>
+            <div>
+                <button class="mm-btn" onclick="window.location.href='DownloadFinoraApp.html'">
+                    Download Now
+                </button>
+            </div>
+        </div>
+
+        <div class="mm-image-box">
+            <img src="assets/contents/girlholdingcard.png" alt="Move Money Freely">
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* --- 5. FOOTER --- */
+        footer {
+            width: 100%;
+            padding: 30px;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            z-index: 2;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--accent-cyan); }
+        .copyright { color: #444; font-size: 12px; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .badge-group { flex-direction: column; width: 100%; gap: 15px; }
+            /* Make buttons uniform width on mobile */
+            .badge-link img { width: 100%; max-width: 200px; height: auto; }
+            .solana-custom-btn { width: 200px; max-width: 200px; justify-content: flex-start; padding-left: 20px; }
+            .qr-section { display: none; }
+        }
+</style>
+
+    <footer>
+        <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#section-footer">Products</a></li>
+            <li><a href="solanacards.html">Finora Cards</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
+        <div class="copyright">© 2024 Finora Technologies.</div>
+    </footer>
+
+    <script>
+        // 1. Particle Generator for "Jugnoo" Effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('particles-js');
+            const particleCount = 25; // Number of fireflies
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random Size
+                const size = Math.random() * 4 + 2; 
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random Start Position
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.left = `${Math.random() * 100}vw`;
+                
+                // Random Animation Duration
+                const duration = Math.random() * 20 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Random Delay
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+
+                container.appendChild(particle);
+            }
+        });
+
+        // 2. Futuristic Scroll Trigger (Replays every time Up/Down)
+        const observerOptions = {
+            threshold: 0.15, // Trigger when 15% visible
+            rootMargin: "0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // If element is in view, add class
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                } else {
+                    // If element leaves view, remove class (REPLAY ANIMATION)
+                    entry.target.classList.remove('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        // Select all elements to animate
+        const animatedElements = document.querySelectorAll('.reveal-element');
+        animatedElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

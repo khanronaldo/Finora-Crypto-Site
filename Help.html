@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit a request – FINORA Support</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+   <link href="https://cdn.prod.website-files.com/660c048ecf246f8d15a85d0a/css/kast-wip.shared.4d1d684f2.min.css" rel="stylesheet" type="text/css" integrity="sha384-TR1oTyMAIAIQrgZaoGRqHia7kb1gDovkw3z0F8uAqrlPVf0HNeUOi8x1gW8dTSBy" crossorigin="anonymous" />
+ <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <script type="text/javascript">
+        ! function(o, c) {
+            var n = c.documentElement,
+                t = " w-mod-";
+            n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
+        }(window, document);
+    </script>
+    
+    <link href="assets/contents/finorFavicon.png" rel="shortcut icon" type="image/x-icon" />
+    
+    <link href="assets/contents/finorFavicon.png" rel="apple-touch-icon" />
+    
+    <link href="#" rel="canonical" />
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FLD9DEH33E"></script>
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('set', 'developer_id.dZGVlNj', true);
+        gtag('js', new Date());
+        gtag('config', 'G-FLD9DEH33E');
+    </script>
+
+ <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PH8RDZWV');
+    </script>
+
+      <form-widget mode='popup' ucid='Lm15z8ZcqOYkUL4GYqY4Nw63Y9w' component="customButton"></form-widget>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "FINORA",
+            "url": "https://www.finora.xyz",
+            /* UPDATED: Logo path set to assets/contents */
+            "logo": "assets/contents/68c92ddb9a25e87eb4708c77_logo-light-bg-dark-rect.png",
+            "sameAs": [
+                "https://www.linkedin.com/company/finoraofficial/",
+                "https://x.com/finoracard",
+                "https://t.me/finoraCommunity"
+            ]
+        }
+    </script>
+
+
+    <style>
+    :root {
+        /* --- PLATINUM ELITE PALETTE --- */
+        --bg-deep: #0a0a0a;
+        --bg-card: #141414;
+        --bg-input: #1a1a1a;
+        
+        --text-main: #f0f0f0;
+        --text-muted: #888888;
+        --text-placeholder: #555555;
+        
+        --border-subtle: #333333;
+        --border-focus: #a0a0a0; /* Platinum Silver */
+        
+        --accent-platinum: #e0e0e0;
+        --accent-silver: #c0c0c0;
+        --accent-glow: rgba(255, 255, 255, 0.15);
+        
+        --font-main: 'Inter', sans-serif;
+        --radius-sm: 4px;
+        --radius-md: 6px;
+        --radius-lg: 12px;
+    }
+
+    * {
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    body {
+        background-color: var(--bg-deep);
+        background-image: radial-gradient(circle at 50% 0%, #1f1f1f 0%, var(--bg-deep) 60%);
+        color: var(--text-main);
+        font-family: var(--font-main);
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    /* --- LAYOUT --- */
+    .main-container {
+        margin-top: 100px;
+        width: 100%;
+        max-width: 720px; /* Standard Zendesk/Support width */
+        padding: 40px 20px 80px 20px;
+        transition: all 0.3s ease; /* Smooth resize */
+    }
+
+    /* --- SEARCH SECTION --- */
+    .search-wrapper {
+        position: relative;
+        margin-bottom: 40px;
+    }
+
+    .search-input {
+        width: 100%;
+        background: var(--bg-input);
+        border: 1px solid var(--border-subtle);
+        border-radius: 30px; /* Pill shape for search */
+        padding: 12px 20px 12px 45px;
+        color: var(--text-main);
+        font-size: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+        border-color: var(--border-focus);
+        box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-muted);
+        font-size: 18px;
+    }
+
+    /* --- HEADER & INFO --- */
+    h1 {
+        font-size: 28px;
+        font-weight: 600;
+        color: var(--accent-platinum);
+        margin-bottom: 20px;
+        letter-spacing: -0.5px;
+    }
+
+    .info-banner {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-sm);
+        padding: 16px;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 30px;
+    }
+
+    .info-banner i {
+        color: var(--accent-silver);
+        margin-top: 2px;
+        flex-shrink: 0; /* Icon won't shrink on mobile */
+    }
+
+    .info-banner p {
+        margin: 0;
+        color: var(--text-main);
+        font-size: 14px;
+    }
+
+    /* --- FORM ELEMENTS --- */
+    .form-group {
+        margin-bottom: 24px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--text-main);
+        font-size: 14px;
+    }
+
+    label span {
+        color: var(--text-muted); /* Asterisk color */
+    }
+
+    .input-field {
+        width: 100%;
+        background: var(--bg-input);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-sm);
+        padding: 10px 15px;
+        color: var(--text-main);
+        font-size: 14px;
+        font-family: var(--font-main);
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .input-field:focus {
+        border-color: var(--border-focus);
+        box-shadow: 0 0 8px var(--accent-glow);
+    }
+
+    .helper-text {
+        display: block;
+        margin-top: 6px;
+        color: var(--text-muted);
+        font-size: 12px;
+    }
+
+    .input-error {
+        border-color: #cf6679 !important;
+    }
+    
+    .error-msg {
+        color: #cf6679;
+        font-size: 12px;
+        margin-top: 5px;
+        display: none;
+    }
+
+    /* --- RICH TEXT EDITOR --- */
+    .rich-editor-container {
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-sm);
+        background: var(--bg-input);
+        overflow: hidden;
+        transition: border-color 0.2s;
+    }
+
+    .rich-editor-container:focus-within {
+        border-color: var(--border-focus);
+        box-shadow: 0 0 8px var(--accent-glow);
+    }
+
+    .editor-toolbar {
+        display: flex;
+        gap: 2px;
+        padding: 8px;
+        border-bottom: 1px solid var(--border-subtle);
+        background: #1e1e1e;
+        flex-wrap: wrap; /* Important for mobile */
+    }
+
+    .toolbar-btn {
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        padding: 4px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.2s;
+    }
+
+    .toolbar-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-main);
+    }
+
+    .toolbar-separator {
+        width: 1px;
+        background: var(--border-subtle);
+        margin: 0 4px;
+    }
+
+    .editor-content {
+        min-height: 150px;
+        padding: 15px;
+        color: var(--text-main);
+        overflow-y: auto;
+    }
+
+    .editor-content:empty:before {
+        content: attr(placeholder);
+        color: var(--text-placeholder);
+        display: block;
+    }
+
+    /* --- ATTACHMENTS (DROP ZONE) --- */
+    .drop-zone {
+        border: 1px dashed var(--border-subtle);
+        border-radius: var(--radius-sm);
+        padding: 30px;
+        text-align: center;
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: all 0.2s;
+        background: rgba(255, 255, 255, 0.01);
+    }
+
+    .drop-zone:hover, .drop-zone.dragover {
+        border-color: var(--accent-silver);
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-main);
+    }
+
+    .file-input {
+        display: none;
+    }
+
+    /* --- SUBMIT BUTTON --- */
+    .submit-btn {
+        margin-top: 20px;
+        background: linear-gradient(135deg, #e3e3e3 0%, #b0b0b0 100%);
+        color: #050505;
+        border: none;
+        padding: 12px 32px;
+        border-radius: 24px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+        background: linear-gradient(135deg, #ffffff 0%, #d0d0d0 100%);
+    }
+
+    .submit-btn:active {
+        transform: translateY(1px);
+    }
+
+    /* --- CHAT WIDGET --- */
+    .chat-widget {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        display: flex;
+        align-items: flex-end;
+        gap: 10px;
+        z-index: 1000;
+        transition: all 0.3s ease;
+    }
+
+    .chat-bubble {
+        background: white;
+        color: black;
+        padding: 12px 16px;
+        border-radius: 12px 12px 0 12px;
+        font-size: 14px;
+        font-weight: 500;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        margin-bottom: 10px;
+        position: relative;
+        animation: slideIn 0.5s ease;
+    }
+
+    .chat-btn-container {
+        position: relative;
+    }
+
+    .chat-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #e3e3e3 0%, #a0a0a0 100%);
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(255,255,255,0.15);
+        transition: all 0.3s;
+    }
+
+    .chat-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .chat-icon {
+        font-size: 28px;
+        color: black;
+    }
+
+    .close-icon {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #333;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: 1px solid #555;
+    }
+
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- 📱 MOBILE RESPONSIVE FIXES (ADDED THIS) --- */
+    @media (max-width: 768px) {
+        .main-container {
+            margin-top: 20px; /* Reduced from 100px */
+            padding: 20px 15px 80px 15px; /* Reduced padding */
+        }
+
+        h1 {
+            font-size: 24px; /* Slightly smaller heading */
+            text-align: center;
+        }
+
+        .search-wrapper {
+            margin-bottom: 25px;
+        }
+
+        .info-banner {
+            flex-direction: column; /* Icon on top of text if needed */
+            align-items: center;
+            text-align: center;
+        }
+        
+        .info-banner i {
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+
+        /* Better touch targets for mobile */
+        .input-field, .search-input {
+            font-size: 16px; /* Prevents iOS auto-zoom */
+            padding: 12px 15px;
+        }
+
+        .submit-btn {
+            width: 100%; /* Full width button on mobile */
+            padding: 14px;
+        }
+
+        /* Adjust Chat Widget for Mobile */
+        .chat-widget {
+            bottom: 20px;
+            right: 20px;
+            flex-direction: column; /* Stack vertically on small screens */
+            align-items: flex-end;
+        }
+
+        .chat-btn {
+            width: 50px;
+            height: 50px;
+        }
+
+        .chat-icon {
+            font-size: 22px;
+        }
+
+        .chat-bubble {
+            font-size: 12px;
+            padding: 10px 14px;
+            max-width: 200px;
+        }
+    }
+</style>
+</head>
+<body>
+
+ <style>
+        :root {
+            --bg-color: #030303;
+            --neon-aqua: #00f2ff;
+            --neon-blue: #0051ff;
+            --text-gray: #a1a1a1;
+            --header-h: 85px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #000;
+            font-family: 'Orbitron', sans-serif;
+            height: 200vh; /* Just to test sticky header */
+        }
+
+        /* --- HEADER CONTAINER --- */
+        .fin-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: var(--header-h);
+            background: rgba(3, 3, 3, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            z-index: 999;
+            border-bottom: 1px solid rgba(0, 242, 255, 0.08);
+        }
+
+        /* --- LOGO --- */
+        .logo-box img {
+            height: 38px; /* Exact size match */
+            width: auto;
+            display: block;
+            /* Placeholder glow effect if image has transparency */
+            filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.3)); 
+            cursor: pointer;
+        }
+
+        /* --- NAVIGATION LINKS --- */
+        .nav-menu {
+            display: flex;
+            gap: 45px; /* Exact spacing */
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            position: relative;
+            transition: color 0.3s ease;
+            padding-bottom: 5px;
+        }
+
+        /* HOVER EFFECT: Ada Aqua / Ada Blue + Glow */
+        .nav-link:hover {
+            color: #fff;
+            text-shadow: 0 0 10px var(--neon-aqua);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            /* Gradient: Half Aqua, Half Blue */
+            background: linear-gradient(90deg, var(--neon-aqua), var(--neon-blue));
+            transition: all 0.3s ease-in-out;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px var(--neon-aqua);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* --- BUTTON (CTA) --- */
+        .cta-btn {
+            background: transparent;
+            color: var(--neon-aqua);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 12px 28px;
+            border: 1.5px solid var(--neon-aqua);
+            border-radius: 4px; /* Slight rounded aesthetic */
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            
+            /* Floating Animation */
+            animation: floatUpDown 3s ease-in-out infinite;
+        }
+
+        /* Button Hover: Fill color, Text black */
+        .cta-btn:hover {
+            background: var(--neon-aqua);
+            color: #000;
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.6);
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+
+        @keyframes floatUpDown {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); } /* Float up */
+            100% { transform: translateY(0px); }
+        }
+
+        /* --- MOBILE HAMBURGER ICON --- */
+        .hamburger {
+            display: none; /* Hidden on desktop */
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 28px;
+            height: 3px;
+            background-color: var(--neon-aqua);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 5px var(--neon-aqua);
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media screen and (max-width: 900px) {
+            .nav-menu {
+                position: absolute;
+                top: var(--header-h);
+                left: 0;
+                width: 100%;
+                background: rgba(5, 5, 5, 0.98);
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+                padding: 40px 0;
+                clip-path: circle(0% at 100% 0); /* Cool transition effect */
+                transition: clip-path 0.5s ease-in-out;
+            }
+
+            .nav-menu.active {
+                clip-path: circle(150% at 100% 0);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            /* Hide Desktop Button, Show in Menu? 
+               Usually better to hide desktop button and show menu links 
+            */
+            .desktop-btn-container {
+                display: none;
+            }
+
+            /* Add button inside menu for mobile */
+            .nav-menu::after {
+                content: 'GET THE FINORA APP';
+                color: var(--neon-aqua);
+                border: 1px solid var(--neon-aqua);
+                padding: 10px 20px;
+                margin-top: 10px;
+                border-radius: 4px;
+                font-family: 'Orbitron', sans-serif;
+                font-weight: 700;
+            }
+            
+            /* Burger Animation to X */
+            .hamburger.open .bar:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 6px);
+            }
+            .hamburger.open .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.open .bar:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -8px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="main-container">
+        
+      
+        <h1>Submit a request</h1>
+
+        <div class="info-banner">
+            <i class="ri-information-fill"></i>
+            <p>Providing as much information as possible in your request will allow us to help you faster</p>
+        </div>
+
+        <form id="requestForm" novalidate>
+            
+            <div class="form-group">
+                <label for="email">Your email address <span>*</span></label>
+                <input type="email" id="email" class="input-field" required>
+                <div class="error-msg">Please enter a valid email address.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject <span>*</span></label>
+                <input type="text" id="subject" class="input-field" required>
+                <div class="error-msg">Subject cannot be empty.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description <span>*</span></label>
+                <div class="rich-editor-container" id="description-container">
+                    
+                    <div class="editor-toolbar">
+                        <button type="button" class="toolbar-btn" title="Paragraph"><i class="ri-paragraph"></i></button>
+                        <div class="toolbar-separator"></div>
+                        <button type="button" class="toolbar-btn" title="Bold" onclick="document.execCommand('bold',false,null);"><i class="ri-bold"></i></button>
+                        <button type="button" class="toolbar-btn" title="Italic" onclick="document.execCommand('italic',false,null);"><i class="ri-italic"></i></button>
+                        <div class="toolbar-separator"></div>
+                        <button type="button" class="toolbar-btn" title="Unordered List" onclick="document.execCommand('insertUnorderedList',false,null);"><i class="ri-list-unordered"></i></button>
+                        <button type="button" class="toolbar-btn" title="Ordered List" onclick="document.execCommand('insertOrderedList',false,null);"><i class="ri-list-ordered"></i></button>
+                        <div class="toolbar-separator"></div>
+                        <button type="button" class="toolbar-btn" title="Link"><i class="ri-link"></i></button>
+                        <button type="button" class="toolbar-btn" title="Image"><i class="ri-image-line"></i></button>
+                        <div class="toolbar-separator"></div>
+                        <button type="button" class="toolbar-btn" title="Quote"><i class="ri-double-quotes-l"></i></button>
+                        <div class="toolbar-separator"></div>
+                        <button type="button" class="toolbar-btn" title="Undo"><i class="ri-arrow-go-back-line"></i></button>
+                        <button type="button" class="toolbar-btn" title="Redo"><i class="ri-arrow-go-forward-line"></i></button>
+                    </div>
+
+                    <div class="editor-content" contenteditable="true" id="editor" placeholder="-"></div>
+                </div>
+                <div class="error-msg" id="desc-error">Description cannot be empty.</div>
+                <span class="helper-text">Please enter the details of your request. A member of our support staff will respond as soon as possible.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number (optional)</label>
+                <input type="tel" id="phone" class="input-field">
+                <span class="helper-text">Please provide the phone number you are trying to use for FINORA registration, please include your area code</span>
+            </div>
+
+            <div class="form-group">
+                <label for="reg-phone">Registered Phone Number <span>*</span></label>
+                <input type="tel" id="reg-phone" class="input-field" required>
+                <div class="error-msg">This field is required.</div>
+            </div>
+
+            <div class="form-group">
+                <label>Attachments (optional)</label>
+                <div class="drop-zone" id="dropZone">
+                    Add file or drop files here
+                </div>
+                <input type="file" id="fileInput" class="file-input" multiple>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+
+        </form>
+    </div>
+
+   
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('requestForm');
+            const dropZone = document.getElementById('dropZone');
+            const fileInput = document.getElementById('fileInput');
+            const editor = document.getElementById('editor');
+
+            // --- 1. File Upload Logic ---
+            dropZone.addEventListener('click', () => fileInput.click());
+
+            dropZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropZone.classList.add('dragover');
+            });
+
+            dropZone.addEventListener('dragleave', () => {
+                dropZone.classList.remove('dragover');
+            });
+
+            dropZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropZone.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                handleFiles(files);
+            });
+
+            fileInput.addEventListener('change', () => {
+                handleFiles(fileInput.files);
+            });
+
+            function handleFiles(files) {
+                if (files.length > 0) {
+                    dropZone.innerHTML = `<i class="ri-file-line"></i> ${files.length} file(s) selected`;
+                    dropZone.style.borderColor = 'var(--accent-silver)';
+                    dropZone.style.color = 'var(--text-main)';
+                }
+            }
+
+            // --- 2. Editor Logic (Simple Toolbar Highlight) ---
+            const toolbarBtns = document.querySelectorAll('.toolbar-btn');
+            toolbarBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Visual toggle only for this clone
+                    this.style.color = this.style.color === 'white' ? 'var(--text-muted)' : 'white';
+                });
+            });
+
+            // --- 3. Form Validation ---
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                let isValid = true;
+
+                // Validate Inputs
+                const requiredInputs = form.querySelectorAll('input[required]');
+                requiredInputs.forEach(input => {
+                    const errorDiv = input.nextElementSibling;
+                    if (!input.value.trim()) {
+                        input.classList.add('input-error');
+                        if (errorDiv) errorDiv.style.display = 'block';
+                        isValid = false;
+                    } else {
+                        input.classList.remove('input-error');
+                        if (errorDiv) errorDiv.style.display = 'none';
+                    }
+                });
+
+                // Validate Editor
+                const descContainer = document.getElementById('description-container');
+                const descError = document.getElementById('desc-error');
+                if (!editor.textContent.trim()) {
+                    descContainer.style.borderColor = '#cf6679';
+                    descError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    descContainer.style.borderColor = 'var(--border-subtle)';
+                    descError.style.display = 'none';
+                }
+
+                if (isValid) {
+                    const btn = document.querySelector('.submit-btn');
+                    const originalText = btn.textContent;
+                    btn.textContent = 'Submitting...';
+                    btn.style.opacity = '0.7';
+                    
+                    // Simulate API call
+                    setTimeout(() => {
+                        btn.textContent = 'Request Sent';
+                        btn.style.background = 'linear-gradient(135deg, #ffffff 0%, #eeeeee 100%)';
+                        setTimeout(() => {
+                            alert('Thank you for contacting FINORA Support. We have received your request.');
+                            window.location.reload();
+                        }, 500);
+                    }, 1500);
+                }
+            });
+
+            // Remove error on input
+            const inputs = form.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    input.classList.remove('input-error');
+                    const errorDiv = input.nextElementSibling;
+                    if(errorDiv && errorDiv.classList.contains('error-msg')) {
+                        errorDiv.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Remove error on editor type
+            editor.addEventListener('input', () => {
+                document.getElementById('description-container').style.borderColor = 'var(--border-focus)';
+                document.getElementById('desc-error').style.display = 'none';
+            });
+        });
+    </script>
+
+    
+<style>
+    /* --- 5. FOOTER --- */
+        footer {
+            width: 100%;
+            padding: 30px;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            z-index: 2;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--accent-cyan); }
+        .copyright { color: #444; font-size: 12px; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .badge-group { flex-direction: column; width: 100%; gap: 15px; }
+            /* Make buttons uniform width on mobile */
+            .badge-link img { width: 100%; max-width: 200px; height: auto; }
+            .solana-custom-btn { width: 200px; max-width: 200px; justify-content: flex-start; padding-left: 20px; }
+            .qr-section { display: none; }
+        }
+</style>
+
+    <footer>
+        <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html #section-footer">Products</a></li>
+            <li><a href="solanacards.html">Finora Cards</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
+        <div class="copyright">© 2024 Finora Technologies.</div>
+    </footer>
+    
+</body>
+</html>

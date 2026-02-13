@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINORA | Global Finance Elite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://cdn.prod.website-files.com/660c048ecf246f8d15a85d0a/css/kast-wip.shared.4d1d684f2.min.css" rel="stylesheet" type="text/css" integrity="sha384-TR1oTyMAIAIQrgZaoGRqHia7kb1gDovkw3z0F8uAqrlPVf0HNeUOi8x1gW8dTSBy" crossorigin="anonymous" />
+ 
+    <script type="text/javascript">
+        ! function(o, c) {
+            var n = c.documentElement,
+                t = " w-mod-";
+            n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
+        }(window, document);
+    </script>
+    
+    <link href="assets/contents/finorFavicon.png" rel="shortcut icon" type="image/x-icon" />
+    
+    <link href="assets/contents/finorFavicon.png" rel="apple-touch-icon" />
+    
+    <link href="#" rel="canonical" />
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FLD9DEH33E"></script>
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('set', 'developer_id.dZGVlNj', true);
+        gtag('js', new Date());
+        gtag('config', 'G-FLD9DEH33E');
+    </script>
+    
+
+    <style>
+        :root {
+            --platinum: linear-gradient(135deg, #f5f5f5 0%, #E5E4E2 50%, #C0C0C0 100%);
+            --deep-black: #050505;
+            --silver-glow: 0 0 20px rgba(229, 228, 226, 0.3);
+        }
+
+        body {
+            background-color: var(--deep-black);
+            color: #E5E4E2;
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .text-platinum {
+            background: var(--platinum);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-platinum {
+            background: var(--platinum);
+        }
+
+        .platinum-btn {
+            background: var(--platinum);
+            color: #050505;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            font-weight: 600;
+        }
+
+        .platinum-btn:hover {
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Vertical Slider Styles */
+        .slider-item {
+            cursor: pointer;
+            opacity: 0.4;
+            transition: opacity 0.4s ease;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .slider-item.active {
+            opacity: 1;
+        }
+
+        .progress-line {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 0%;
+            background: #fff;
+            box-shadow: 0 0 10px white;
+        }
+
+        /* Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .marquee-container {
+            display: flex;
+            width: 200%;
+            animation: marquee 20s linear infinite;
+        }
+
+        .flag-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            margin: 0 15px;
+            flex-shrink: 0;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Custom Checkmark */
+        .silver-check {
+            color: #C0C0C0;
+            filter: drop-shadow(0 0 2px white);
+        }
+
+        .motion-blur-bg {
+            background: linear-gradient(45deg, #050505 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blur-streak {
+            position: absolute;
+            width: 300%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transform: skewX(-45deg);
+            filter: blur(40px);
+            animation: moveStreaks 10s linear infinite;
+        }
+
+        @keyframes moveStreaks {
+            from { left: -100%; }
+            to { left: 100%; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+
+  <section class="min-h-screen flex items-center px-6 lg:px-24 py-20 overflow-hidden">
+    <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+            <p class="text-zinc-500 tracking-[0.3em] font-semibold text-sm mb-6 uppercase">Global Accounts</p>
+            <h1 class="text-6xl lg:text-8xl font-bold leading-tight mb-8 text-platinum">
+                MAKE DOLLAR <br> MOVES
+            </h1>
+            <p class="text-zinc-400 text-lg lg:text-xl max-w-lg mb-12 leading-relaxed">
+                Effortlessly convert your crypto into cash and send, spend, and receive USD with no limits.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 items-center">
+                <button class="platinum-btn px-10 py-4 rounded-full w-full sm:w-auto"><a href="DownloadFinoraApp.html">Open an Account</a></button>
+                <div class="flex items-center -space-x-3">
+                    <img src="https://i.pravatar.cc/100?u=1" class="w-10 h-10 rounded-full border-2 border-black" alt="u1">
+                    <img src="https://i.pravatar.cc/100?u=2" class="w-10 h-10 rounded-full border-2 border-black" alt="u2">
+                    <img src="https://i.pravatar.cc/100?u=3" class="w-10 h-10 rounded-full border-2 border-black" alt="u3">
+                    <span class="pl-6 text-zinc-500 text-sm font-medium">Join millions of members</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="relative reveal delay-200">
+            <div class="absolute -inset-10 bg-white/5 blur-3xl rounded-full"></div>
+            <img src="assets/contents/globalaccountsmainpage.png" 
+                 class="rounded-[40px] border-[10px] border-zinc-900 shadow-2xl relative z-10 mx-auto max-w-[320px] lg:max-w-full" 
+                 alt="Mockup">
+        </div>
+    </div>
+</section>
+
+    <!-- MISSION STATEMENT -->
+    <section class="py-32 px-6 bg-black">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="text-3xl lg:text-5xl font-light mb-4">Today's ambition is global.</h2>
+            <h2 class="text-3xl lg:text-5xl font-light text-zinc-600">Yesterday's banking wasn't built for it.</h2>
+            <div class="my-16 h-px w-32 bg-zinc-800 mx-auto"></div>
+            <p class="text-2xl lg:text-4xl font-medium leading-snug">
+                At <span class="text-platinum">FINORA</span>, the future of finance means unlocking human potential, not limiting it.
+            </p>
+            <p class="mt-12 text-zinc-500 text-xl font-light">Free your money. Fuel your momentum.</p>
+        </div>
+    </section>
+
+    <!-- USD ACCOUNT FEATURE -->
+    <section class="py-32 px-6 lg:px-24 bg-[#080808]">
+        <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div class="reveal order-2 lg:order-1">
+                <div class="relative group">
+                    <div class="absolute -inset-10 bg-white/5 blur-3xl rounded-full opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="glass-card p-10 relative z-10 border-white/20">
+                        <div class="flex justify-between items-start mb-16">
+                            <div>
+                                <p class="text-zinc-500 text-xs uppercase tracking-widest mb-2">USD Account</p>
+                                <h4 class="text-3xl font-bold text-white">$360,400.12</h4>
+                            </div>
+                            <div class="bg-white/10 p-3 rounded-xl border border-white/10">VISA</div>
+                        </div>
+                        <div class="space-y-4 mb-16">
+                            <p class="text-zinc-500 font-mono text-sm">Virtual Bank Account: ****7891</p>
+                            <p class="text-zinc-500 font-mono text-sm">Bank: Lead Bank in USA</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <button class="flex-1 bg-white/10 py-3 rounded-xl border border-white/10 hover:bg-white/20 transition-colors">Receive</button>
+                            <button class="flex-1 bg-white/10 py-3 rounded-xl border border-white/10 hover:bg-white/20 transition-colors">Pay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal order-1 lg:order-2">
+                <h2 class="text-5xl lg:text-6xl font-bold mb-8 text-platinum">GET A USD ACCOUNT.<br>GET AHEAD.</h2>
+                <ul class="space-y-6">
+                    <li class="flex items-center gap-4">
+                        <span class="silver-check text-xl">✓</span>
+                        <span class="text-lg text-zinc-300">ACH/SWIFT enabled globally</span>
+                    </li>
+                    <li class="flex items-center gap-4">
+                        <span class="silver-check text-xl">✓</span>
+                        <span class="text-lg text-zinc-300">Instant activation in minutes</span>
+                    </li>
+                    <li class="flex items-center gap-4">
+                        <span class="silver-check text-xl">✓</span>
+                        <span class="text-lg text-zinc-300">Bank-grade protection protocols</span>
+                    </li>
+                    <li class="flex items-center gap-4">
+                        <span class="silver-check text-xl">✓</span>
+                        <span class="text-lg text-zinc-300">Integrated with physical FINORA Card</span>
+                    </li>
+                </ul>
+                <button class="platinum-btn px-12 py-5 rounded-full mt-12 w-full lg:w-auto"><a href="DownloadFinoraApp.html">Get my USD Account</a></button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- MANAGE MONEY VERTICAL SLIDER -->
+    <section class="py-24 px-6 lg:px-24 relative overflow-hidden slider-section" id="manage-money">
+        <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <div class="reveal">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-16 text-platinum">MANAGE MONEY <br>YOUR WAY</h2>
+                <div class="space-y-12 slider-nav">
+                    <div class="slider-item active" data-index="0">
+                        <div class="progress-line"><div class="progress-fill"></div></div>
+                        <h3 class="text-2xl font-bold mb-2">Deposit dollars</h3>
+                        <p class="text-zinc-500 text-sm active-sub hidden">Fastest USD rails in the industry.</p>
+                    </div>
+                    <div class="slider-item" data-index="1">
+                        <div class="progress-line"><div class="progress-fill"></div></div>
+                        <h3 class="text-2xl font-bold mb-2">Deposit stablecoins</h3>
+                        <div class="text-zinc-500 text-sm space-y-1 active-sub hidden">
+                            <p>• ETH, Tron, Arbitrum</p>
+                            <p>• Instant conversion</p>
+                            <p>• No hidden spreads</p>
+                        </div>
+                    </div>
+                    <div class="slider-item" data-index="2">
+                        <div class="progress-line"><div class="progress-fill"></div></div>
+                        <h3 class="text-2xl font-bold mb-2">Deposit crypto</h3>
+                    </div>
+                    <div class="slider-item" data-index="3">
+                        <div class="progress-line"><div class="progress-fill"></div></div>
+                        <h3 class="text-2xl font-bold mb-2 text-wrap">Exchanges & Wallets</h3>
+                    </div>
+                </div>
+                <button class="mt-12 border border-zinc-700 hover:border-white text-zinc-300 hover:text-white px-8 py-3 rounded-full transition-all"><a href="DownloadFinoraApp.html">Download FINORA</a></button>
+            </div>
+           <div class="slider-visual h-[400px] lg:h-[600px] flex items-center justify-center reveal delay-200">
+    
+    <div class="glass-card w-full h-full flex items-center justify-center p-4 lg:p-8 transition-all duration-700" id="manage-image-container">
+        
+        <div class="text-center relative w-full h-full flex items-center justify-center">
+            
+            <img src="assets/contents/banktransfer.jpg" 
+                 class="slider-img absolute max-w-full max-h-full object-contain rounded-2xl shadow-2xl opacity-80" 
+                 alt="UI">
+            
+            <img src="assets/contents/stablecoins1.png" 
+                 class="slider-img hidden absolute max-w-full max-h-full object-contain rounded-2xl shadow-2xl opacity-80" 
+                 alt="UI">
+            
+            <img src="assets/contents/bitcoinnewpic.png" 
+                 class="slider-img hidden absolute max-w-full max-h-full object-contain rounded-2xl shadow-2xl opacity-80" 
+                 alt="UI">
+            
+            <img src="assets/contents/newcardsgen.png" 
+                 class="slider-img hidden absolute max-w-full max-h-full object-contain rounded-2xl shadow-2xl opacity-80" 
+                 alt="UI">
+                 
+        </div>
+    </div>
+</div>
+        </div>
+    </section>
+
+
+    <!-- SEND & SPEND VERTICAL SLIDER -->
+    <section class="py-24 px-6 lg:px-24 relative overflow-hidden slider-section" id="send-spend">
+    <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        
+       <div class="slider-visual h-[400px] lg:h-[600px] flex items-center justify-center order-2 lg:order-1 reveal">
+    
+    <div class="glass-card w-full h-full flex items-center justify-center p-4 lg:p-8 transition-all duration-700" id="send-image-container">
+        
+        <div class="text-center relative w-full h-full flex items-center justify-center">
+            
+            <img src="assets/contents/bankfiat.png" 
+                 class="slider-img absolute max-w-full max-h-full object-contain rounded-2xl shadow-2xl opacity-80" 
+                 alt="Send Fiat">
+            
+            <img src="assets/contents/stablecoinanotherimg.png" 
+                 class="slider-img hidden absolute max-w-full max-h-full object-contain rounded-2xl shadow-2xl opacity-80" 
+                 alt="Send Stablecoin">
+            
+            <img src="assets/contents/anothercardimage.png" 
+                 class="slider-img hidden absolute max-w-full max-h-full object-contain rounded-2xl shadow-2xl opacity-80" 
+                 alt="Spend Globally">
+            
+        </div>
+    </div>
+</div>
+
+        <div class="order-1 lg:order-2 reveal delay-200">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-16 text-platinum">GLOBAL FLOWS</h2>
+            
+            <div class="space-y-12 slider-nav">
+                <div class="slider-item active" data-index="0">
+                    <div class="progress-line"><div class="progress-fill"></div></div>
+                    <h3 class="text-2xl font-bold mb-2">Send local fiat</h3>
+                    <p class="text-zinc-500 text-sm active-sub hidden">Transfer to 200+ countries with real-time receipts.</p>
+                </div>
+                
+                <div class="slider-item" data-index="1">
+                    <div class="progress-line"><div class="progress-fill"></div></div>
+                    <h3 class="text-2xl font-bold mb-2">Send stablecoins</h3>
+                    <div class="text-zinc-500 text-sm active-sub hidden">
+                        <p>• USDC, USDT, PYUSD</p>
+                        <p>• Zero gas fees</p>
+                    </div>
+                </div>
+                
+                <div class="slider-item" data-index="2">
+                    <div class="progress-line"><div class="progress-fill"></div></div>
+                    <h3 class="text-2xl font-bold mb-2">Spend globally</h3>
+                    <p class="text-zinc-500 text-sm active-sub hidden">Use your Finora card at 50M+ merchants worldwide.</p>
+                </div>
+            </div>
+            
+            <button class="mt-12 border border-zinc-700 hover:border-white text-zinc-300 hover:text-white px-8 py-3 rounded-full transition-all"><a href="about.html">Explore FINORA</a></button>
+        </div>
+    </div>
+</section>
+
+    <!-- FEATURES GRID / MARQUEE -->
+    <section class="py-32 px-6 lg:px-24">
+        <div class="container mx-auto">
+            <div class="max-w-2xl mb-20 reveal">
+                <p class="text-lg lg:text-2xl text-zinc-400">
+                    <span class="text-white font-bold">FINORA isn’t a bank.</span> It’s what banking should be. We connect traditional finance with the speed of the internet.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- CARD 1: MARQUEE -->
+                <div class="glass-card p-8 h-[450px] flex flex-col justify-between overflow-hidden reveal">
+    <div>
+        <h4 class="text-2xl font-bold mb-4">Borderless Access</h4>
+        <p class="text-zinc-500">Move dollars globally via SWIFT to 200+ countries.</p>
+    </div>
+
+    <div class="relative w-full py-12 overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+        
+        <div class="flex gap-8 animate-marquee whitespace-nowrap items-center">
+            
+            <img src="assets/contents/jap.webp" class="w-16 h-16 rounded-full object-cover border border-white/10 shadow-lg" alt="USA">
+            <img src="assets/contents/uk.png" class="w-16 h-16 rounded-full object-cover border border-white/10 shadow-lg" alt="UK">
+            <img src="assets/contents/eu.png" class="w-16 h-16 rounded-full object-cover border border-white/10 shadow-lg" alt="EU">
+            <img src="assets/contents/prt.png" class="w-16 h-16 rounded-full object-cover border border-white/10 shadow-lg" alt="UAE">
+            <img src="assets/contents/usa.png" class="w-16 h-16 rounded-full object-cover border border-white/10 shadow-lg" alt="Japan">
+            <img src="assets/contents/tk.jpg" class="w-16 h-16 rounded-full object-cover border border-white/10 shadow-lg" alt="Canada">
+
+            <img src="assets/contents/jap.webp" class="w-16 h-16 rounded-full object-cover border border-white/10 shadow-lg" alt="USA">
+            <img src="assets/contents/uk.png" class="w-16 h-16 rounded-full object-cover border border-white/10 shadow-lg" alt="UK">
+            <img src="assets/contents/eu.png" class="w-16 h-16 rounded-full object-cover border border-white/10 shadow-lg" alt="EU">
+            <img src="assets/contents/prt.png" class="w-16 h-16 rounded-full object-cover border border-white/10 shadow-lg" alt="UAE">
+            <img src="assets/contents/usa.png" class="w-16 h-16 rounded-full object-cover border border-white/10 shadow-lg" alt="Japan">
+            <img src="assets/contents/tk.jpg" class="w-16 h-16 rounded-full object-cover border border-white/10 shadow-lg" alt="Canada">
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    .animate-marquee {
+        animation: marquee 6s linear infinite;
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            /* Moves left by 50% because we duplicated the content. 
+               If the gap is very large, you might need to adjust calculation, 
+               but usually -50% works if content is exactly doubled. */
+            transform: translateX(-50%);
+        }
+    }
+</style>
+
+                <!-- CARD 2 -->
+                <div class="glass-card p-8 h-[450px] flex flex-col justify-between reveal delay-200">
+                    <div>
+                        <h4 class="text-2xl font-bold mb-4">Unified Balance</h4>
+                        <p class="text-zinc-500">Spend, send, and receive from one premium account.</p>
+                    </div>
+                    <div class="relative bg-zinc-900/50 rounded-2xl h-48 border border-white/5 flex items-center justify-center">
+                        <div class="text-center">
+                            <p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-1">Available</p>
+                            <p class="text-3xl font-bold text-platinum">$31,847.92</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="glass-card p-8 h-[450px] flex flex-col justify-between reveal delay-400 group">
+    <div>
+        <h4 class="text-2xl font-bold mb-4">The reliability of Visa</h4>
+        <p class="text-zinc-500">Cards accepted at 150M merchants worldwide.</p>
+    </div>
+
+    <div class="relative w-full flex-1 flex items-center justify-center mt-6">
+        
+        <img src="assets/contents/luxury card.png" 
+             class="absolute w-48 lg:w-56 h-auto rounded-xl shadow-lg transform -rotate-12 translate-x-[-15px] translate-y-2 opacity-60 transition-transform duration-500 group-hover:-rotate-12 group-hover:translate-x-[-25px]" 
+             alt="Card Back">
+
+        <img src="assets/contents/supergold.png" 
+             class="absolute w-48 lg:w-56 h-auto rounded-xl shadow-xl transform rotate-6 translate-x-[15px] opacity-80 transition-transform duration-500 group-hover:rotate-12 group-hover:translate-x-[25px]" 
+             alt="Card Middle">
+
+        <img src="assets/contents/neonfinoracard.png" 
+             class="absolute w-48 lg:w-56 h-auto rounded-xl shadow-2xl z-10 transition-transform duration-500 group-hover:scale-105" 
+             alt="Card Front">
+             
+    </div>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="px-6 lg:px-24 py-32">
+        <div class="motion-blur-bg container mx-auto rounded-[40px] p-12 lg:p-32 text-center reveal">
+            <div class="blur-streak"></div>
+            <div class="relative z-10">
+                <h2 class="text-5xl lg:text-8xl font-bold mb-8 text-platinum">POWER YOUR<br>POTENTIAL</h2>
+                <p class="text-zinc-400 text-xl lg:text-2xl mb-16">Get the global money app that grows with you.</p>
+                <button class="platinum-btn px-16 py-6 rounded-full text-xl"><a href="DownloadFinoraApp.html">Download FINORA</a></button>
+            </div>
+        </div>
+    </section>
+
+   
+<style>
+    /* --- 5. FOOTER --- */
+        footer {
+            width: 100%;
+            padding: 30px;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            z-index: 2;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--accent-cyan); }
+        .copyright { color: #444; font-size: 12px; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .badge-group { flex-direction: column; width: 100%; gap: 15px; }
+            /* Make buttons uniform width on mobile */
+            .badge-link img { width: 100%; max-width: 200px; height: auto; }
+            .solana-custom-btn { width: 200px; max-width: 200px; justify-content: flex-start; padding-left: 20px; }
+            .qr-section { display: none; }
+        }
+</style>
+
+    <footer>
+        <ul class="footer-links">
+            <li><a href="index.html" class="nav-link">HOME</a></li>
+            <li><a href="index.html #section-footer" class="nav-link">PRODUCTS</a></li>
+            <li><a href="solanacards.html" class="nav-link">FINORA CARDS</a></li>
+            <li><a href="about.html" class="nav-link">ABOUT US</a></li>
+        </ul>
+        <div class="copyright">© 2024 Finora Technologies.</div>
+    </footer>
+
+    <script>
+       // Scroll Reveal Observer (Keep this as is)
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Slider Functionality
+function initSlider(sectionId, containerId) {
+    const section = document.getElementById(sectionId);
+    if (!section) return; // Guard clause in case ID is wrong
+
+    const items = section.querySelectorAll('.slider-item');
+    const container = document.getElementById(containerId);
+    
+    // Select all images inside the container
+    const images = container.querySelectorAll('.slider-img');
+    
+    let current = 0;
+    let timer;
+
+    const updateSlider = (index) => {
+        current = index;
+
+        // 1. Handle Text/Progress Bar Logic
+        items.forEach((item, i) => {
+            const fill = item.querySelector('.progress-fill');
+            const sub = item.querySelector('.active-sub');
+            item.classList.toggle('active', i === index);
+            
+            // Clear existing intervals to prevent speed-ups
+            if (item.progressInterval) clearInterval(item.progressInterval);
+
+            if (i === index) {
+                // Reset to 0 before animating
+                fill.style.height = '0%';
+                if(sub) sub.classList.remove('hidden');
+                
+                // Animate line
+                let progress = 0;
+                item.progressInterval = setInterval(() => {
+                    progress += 1;
+                    fill.style.height = progress + '%';
+                    if (progress >= 100) clearInterval(item.progressInterval);
+                }, 40); // 40ms * 100 = 4000ms
+
+            } else {
+                fill.style.height = '0%';
+                if(sub) sub.classList.add('hidden');
+            }
+        });
+
+        // 2. Handle Image Swap Logic
+        // Fade out container briefly for smooth transition
+        container.style.opacity = '0';
+        
+        setTimeout(() => {
+            // Hide all images
+            images.forEach(img => img.classList.add('hidden'));
+            
+            // Show only the image matching the current index
+            if (images[index]) {
+                images[index].classList.remove('hidden');
+            }
+            
+            // Fade container back in
+            container.style.opacity = '1';
+        }, 300); // 300ms delay matches CSS transition speed usually
+    };
+
+    const next = () => {
+        current = (current + 1) % items.length;
+        updateSlider(current);
+    };
+
+    // Add Click Listeners
+    items.forEach((item, i) => {
+        item.addEventListener('click', () => {
+            clearInterval(timer); // Stop auto-rotation
+            updateSlider(i);
+            timer = setInterval(next, 4000); // Restart auto-rotation
+        });
+    });
+
+    // Start Slider
+    updateSlider(0);
+    timer = setInterval(next, 4000);
+}
+
+// Initialize Sliders
+// Ensure DOM is loaded before running
+document.addEventListener('DOMContentLoaded', () => {
+    initSlider('manage-money', 'manage-image-container');
+    // initSlider('send-spend', 'send-image-container'); // Uncomment if you have this section
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    initSlider('manage-money', 'manage-image-container');
+    
+    // ADD THIS LINE TO START THE SECOND SLIDER:
+    initSlider('send-spend', 'send-image-container'); 
+});
+    </script>
+</body>
+</html>

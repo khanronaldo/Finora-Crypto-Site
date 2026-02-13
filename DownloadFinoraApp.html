@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Finora | Future Finance</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+        /* --- CORE VARIABLES --- */
+        :root {
+            --bg-dark: #000000;
+            --text-white: #ffffff;
+            --text-gray: #b0b0b0;
+            --accent-cyan: #00f3ff; /* Neon Aqua */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            overflow-x: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- 1. PARTICLE BACKGROUND --- */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #111 0%, #000 80%);
+        }
+
+        /* --- 2. MAIN CONTENT --- */
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            max-width: 1200px;
+            z-index: 2;
+        }
+
+        /* Logo Centered - UPDATED SIZE */
+        .main-logo {
+            height: 120px; /* Pehle 70px tha, ab bada kar diya */
+            width: auto;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 15px rgba(0, 243, 255, 0.3));
+            opacity: 0; 
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            opacity: 0;
+            color: #fff;
+            text-shadow: 0 0 40px rgba(0, 243, 255, 0.2);
+        }
+
+        p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-gray);
+            max-width: 650px;
+            margin-bottom: 50px;
+            line-height: 1.6;
+            font-weight: 300;
+            opacity: 0;
+        }
+
+        /* --- 3. BADGE GROUP (Buttons) --- */
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 15px; /* Spacing between buttons */
+            margin-bottom: 50px;
+            opacity: 0;
+        }
+
+        .badge-link {
+            transition: transform 0.3s ease, filter 0.3s ease;
+            display: block;
+            text-decoration: none;
+        }
+
+        .badge-img {
+            height: 52px; /* Fixed height for consistency */
+            width: auto;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+            display: block;
+        }
+
+        /* --- SOLANA BUTTON FIXED --- */
+        .solana-custom-btn {
+            height: 52px; /* Matches exact height of App Store images */
+            min-width: 160px; /* Thoda wide kiya taake balance rahe */
+            background: #000;
+            border: 1px solid rgba(255,255,255,0.2); /* Matches other borders */
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center content */
+            gap: 10px;
+            padding: 0 15px;
+            box-sizing: border-box;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Hover Effect for Solana Button (Matching others) */
+        .solana-custom-btn:hover, .badge-link:hover {
+            transform: translateY(-5px);
+            border-color: #00FFA3;
+            box-shadow: 0 5px 15px rgba(0, 255, 163, 0.2);
+        }
+
+        .solana-custom-btn .sol-icon { 
+            width: 26px; 
+            height: 26px; 
+        }
+        
+        .solana-custom-btn .sol-text-col { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-start; 
+            line-height: 1.1; 
+            justify-content: center;
+        }
+        
+        .solana-custom-btn .sol-small { 
+            font-size: 9px; 
+            color: #ccc; 
+            text-transform: uppercase; 
+            font-family: sans-serif;
+            margin-bottom: 1px;
+        }
+        
+        .solana-custom-btn .sol-large { 
+            font-size: 13px; 
+            color: #fff; 
+            font-weight: 700; 
+            letter-spacing: 0.3px;
+        }
+
+        /* --- 4. QR SECTION --- */
+        .qr-section {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            padding: 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.05);
+        }
+
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+        }
+
+        .qr-label {
+            margin-top: 15px;
+            font-size: 11px;
+            color: var(--accent-cyan);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* --- 5. FOOTER --- */
+        footer {
+            width: 100%;
+            padding: 30px;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            z-index: 2;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--accent-cyan); }
+        .copyright { color: #444; font-size: 12px; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .badge-group { flex-direction: column; width: 100%; gap: 15px; }
+            /* Make buttons uniform width on mobile */
+            .badge-link img { width: 100%; max-width: 200px; height: auto; }
+            .solana-custom-btn { width: 200px; max-width: 200px; justify-content: flex-start; padding-left: 20px; }
+            .qr-section { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="particle-canvas"></canvas>
+
+    <main>
+        <img src="assets/contents/finoralogo.png" alt="Finora Logo" class="main-logo" id="animate-logo">
+
+        <h1 id="animate-h1">Download Finora Now.</h1>
+        <p id="animate-p">Your gateway to borderless finance. Fast, secure, and built for the future. Get the app today.</p>
+        
+        <div class="badge-group" id="animate-badges">
+            
+            <a href="#" class="badge-link">
+                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="App Store" class="badge-img">
+            </a>
+            
+            <a href="#" class="badge-link">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="badge-img">
+            </a>
+
+            <a href="#" class="solana-custom-btn">
+                <svg class="sol-icon" viewBox="0 0 397 313" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M64.6 237.9c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.8c-5.8 0-8.7-7-4.6-11.1l62.4-62.7zM332.4 75.1c-2.4 2.4-5.7 3.8-9.2 3.8H5.8c-5.8 0-8.7-7-4.6-11.1L63.9 5.1c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7zM64.6 121.5c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.8c-5.8 0-8.7-7-4.6-11.1l62.4-62.7z" fill="url(#paint0_linear)"/>
+                    <defs>
+                        <linearGradient id="paint0_linear" x1="56.7766" y1="50.4828" x2="333.642" y2="283.475" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#00F0FF"/>
+                            <stop offset="1" stop-color="#00F0FF"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="sol-text-col">
+                    <span class="sol-small">Download on</span>
+                    <span class="sol-large">Solana dApp Store</span>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="qr-section" id="animate-qr">
+            <img src="assets/qr-placeholder.png" alt="Scan QR" class="qr-code">
+            <div class="qr-label">Scan to Install</div>
+        </div>
+    </main>
+
+    <footer>
+        <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="solana-cards.html">Solana Cards</a></li>
+        </ul>
+        <div class="copyright">© 2024 Finora Technologies.</div>
+    </footer>
+
+    <script>
+        // --- 1. NEON AQUA SPIDER WEB ---
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particlesArray;
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        });
+
+        const mouse = { x: null, y: null, radius: 150 };
+        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
+
+        class Particle {
+            constructor(x, y, dirX, dirY, size, color) {
+                this.x = x; this.y = y;
+                this.directionX = dirX; this.directionY = dirY;
+                this.size = size; this.color = color;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+            update() {
+                if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+                if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+                
+                let dx = mouse.x - this.x; let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx*dx + dy*dy);
+                if (distance < mouse.radius + this.size) {
+                    if (mouse.x < this.x && this.x < canvas.width - this.size * 10) this.x += 2;
+                    if (mouse.x > this.x && this.x > this.size * 10) this.x -= 2;
+                    if (mouse.y < this.y && this.y < canvas.height - this.size * 10) this.y += 2;
+                    if (mouse.y > this.y && this.y > this.size * 10) this.y -= 2;
+                }
+                this.x += this.directionX; this.y += this.directionY;
+                this.draw();
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 2) + 1;
+                let x = (Math.random() * innerWidth);
+                let y = (Math.random() * innerHeight);
+                let dirX = (Math.random() * 0.4) - 0.2;
+                let dirY = (Math.random() * 0.4) - 0.2;
+                particlesArray.push(new Particle(x, y, dirX, dirY, size, '#00f3ff')); 
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+            for (let i = 0; i < particlesArray.length; i++) { particlesArray[i].update(); }
+            connect();
+        }
+
+        function connect() {
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2) + 
+                                   ((particlesArray[a].y - particlesArray[b].y) ** 2);
+                    if (distance < (canvas.width/7) * (canvas.height/7)) {
+                        let opacityValue = 1 - (distance/20000);
+                        ctx.strokeStyle = 'rgba(0, 243, 255,' + opacityValue * 0.3 + ')'; 
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+        init(); animate();
+
+        // --- 2. ANIMATIONS ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+            tl.to("#animate-logo", { y: 0, opacity: 1, duration: 1 })
+              .to("#animate-h1", { y: 0, opacity: 1, duration: 1 }, "-=0.5")
+              .to("#animate-p", { y: 0, opacity: 1, duration: 1 }, "-=0.7")
+              .to(".badge-group", { opacity: 1, duration: 0.5 }, "-=0.5")
+              // Updated selector to include the new custom button in the animation
+              .from(".badge-link, .solana-custom-btn", { 
+                  y: 30, opacity: 0, stagger: 0.1, ease: "back.out(1.7)", duration: 0.8 
+              }, "-=0.3")
+              .to("#animate-qr", { scale: 1, opacity: 1, y: 0, duration: 1 }, "-=0.5");
+
+            gsap.to("#animate-qr", { y: -10, duration: 2.5, repeat: -1, yoyo: true, ease: "sine.inOut" });
+        });
+    </script>
+</body>
+</html>
