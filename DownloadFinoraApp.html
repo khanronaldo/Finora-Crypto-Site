@@ -59,9 +59,9 @@
             z-index: 2;
         }
 
-        /* Logo Centered - UPDATED SIZE */
+        /* Logo Centered */
         .main-logo {
-            height: 120px; /* Pehle 70px tha, ab bada kar diya */
+            height: 120px;
             width: auto;
             margin-bottom: 30px;
             filter: drop-shadow(0 0 15px rgba(0, 243, 255, 0.3));
@@ -95,75 +95,69 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 15px; /* Spacing between buttons */
+            gap: 20px; /* Gap slightly increased */
             margin-bottom: 50px;
             opacity: 0;
         }
 
-        .badge-link {
-            transition: transform 0.3s ease, filter 0.3s ease;
-            display: block;
-            text-decoration: none;
-        }
-
-        .badge-img {
-            height: 52px; /* Fixed height for consistency */
-            width: auto;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.2);
-            display: block;
-        }
-
-        /* --- SOLANA BUTTON FIXED --- */
-        .solana-custom-btn {
-            height: 52px; /* Matches exact height of App Store images */
-            min-width: 160px; /* Thoda wide kiya taake balance rahe */
+        /* --- UNIFIED BUTTON STYLES (Equal Sizes) --- */
+        .unified-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            /* Fixed Dimensions for Equality */
+            width: 180px; 
+            height: 55px;
+            
             background: #000;
-            border: 1px solid rgba(255,255,255,0.2); /* Matches other borders */
-            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            text-decoration: none;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Images inside buttons (App/Play Store) */
+        .unified-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures image fills the button perfectly */
+            display: block;
+        }
+
+        /* Solana Button Specifics (to match Image buttons) */
+        .solana-content {
             display: flex;
             align-items: center;
             justify-content: center; /* Center content */
             gap: 10px;
-            padding: 0 15px;
-            box-sizing: border-box;
-            text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            width: 100%;
+            height: 100%;
         }
 
-        /* Hover Effect for Solana Button (Matching others) */
-        .solana-custom-btn:hover, .badge-link:hover {
+        /* Hover Effects */
+        .unified-btn:hover {
             transform: translateY(-5px);
             border-color: #00FFA3;
-            box-shadow: 0 5px 15px rgba(0, 255, 163, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 255, 163, 0.25);
         }
 
-        .solana-custom-btn .sol-icon { 
-            width: 26px; 
-            height: 26px; 
-        }
-        
-        .solana-custom-btn .sol-text-col { 
+        /* Solana SVG & Text Styling */
+        .sol-icon { width: 26px; height: 26px; }
+        .sol-text-col { 
             display: flex; 
             flex-direction: column; 
             align-items: flex-start; 
             line-height: 1.1; 
-            justify-content: center;
         }
-        
-        .solana-custom-btn .sol-small { 
-            font-size: 9px; 
-            color: #ccc; 
-            text-transform: uppercase; 
-            font-family: sans-serif;
-            margin-bottom: 1px;
+        .sol-small { 
+            font-size: 8px; color: #ccc; 
+            text-transform: uppercase; margin-bottom: 2px;
         }
-        
-        .solana-custom-btn .sol-large { 
-            font-size: 13px; 
-            color: #fff; 
-            font-weight: 700; 
-            letter-spacing: 0.3px;
+        .sol-large { 
+            font-size: 13px; color: #fff; font-weight: 700; 
         }
 
         /* --- 4. QR SECTION --- */
@@ -220,13 +214,69 @@
         .footer-links a:hover { color: var(--accent-cyan); }
         .copyright { color: #444; font-size: 12px; }
 
+
+        /* ============================================================
+           START TEMPORARY FEATURE: COMING SOON NOTIFICATION CSS
+           (App Launch Hone par yahan se niche delete kar dein)
+           ============================================================ */
+        #toast-notification {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px); /* Initially hidden */
+            background: rgba(10, 10, 10, 0.95);
+            border: 1px solid var(--accent-cyan);
+            color: #fff;
+            padding: 16px 24px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            min-width: 300px;
+            max-width: 90%;
+        }
+
+        #toast-notification.active {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast-icon {
+            font-size: 20px;
+        }
+
+        .toast-content h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--accent-cyan);
+        }
+
+        .toast-content p {
+            font-size: 12px;
+            color: #ccc;
+            margin: 0;
+            line-height: 1.4;
+            max-width: 100%;
+            opacity: 1; /* Override global p opacity */
+        }
+        /* ============================================================
+           END TEMPORARY FEATURE CSS
+           ============================================================ */
+
+
         /* --- MOBILE --- */
         @media (max-width: 768px) {
             h1 { font-size: 3rem; }
-            .badge-group { flex-direction: column; width: 100%; gap: 15px; }
-            /* Make buttons uniform width on mobile */
-            .badge-link img { width: 100%; max-width: 200px; height: auto; }
-            .solana-custom-btn { width: 200px; max-width: 200px; justify-content: flex-start; padding-left: 20px; }
+            .badge-group { flex-direction: column; gap: 15px; }
+            
+            /* Mobile par bhi same width rahegi taake consistent lage */
+            .unified-btn { width: 200px; height: 55px; }
+            
             .qr-section { display: none; }
         }
     </style>
@@ -235,6 +285,13 @@
 
     <canvas id="particle-canvas"></canvas>
 
+    <div id="toast-notification">
+        <div class="toast-icon">🚀</div>
+        <div class="toast-content">
+            <h4>Hang Tight!</h4>
+            <p>We are finalizing the launch. The Finora App will be live very soon.</p>
+        </div>
+    </div>
     <main>
         <img src="assets/contents/finoralogo.png" alt="Finora Logo" class="main-logo" id="animate-logo">
 
@@ -243,27 +300,29 @@
         
         <div class="badge-group" id="animate-badges">
             
-            <a href="#" class="badge-link">
-                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="App Store" class="badge-img">
+            <a href="#" class="unified-btn coming-soon-trigger">
+                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="App Store">
             </a>
             
-            <a href="#" class="badge-link">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="badge-img">
+            <a href="#" class="unified-btn coming-soon-trigger">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
             </a>
 
-            <a href="#" class="solana-custom-btn">
-                <svg class="sol-icon" viewBox="0 0 397 313" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M64.6 237.9c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.8c-5.8 0-8.7-7-4.6-11.1l62.4-62.7zM332.4 75.1c-2.4 2.4-5.7 3.8-9.2 3.8H5.8c-5.8 0-8.7-7-4.6-11.1L63.9 5.1c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7zM64.6 121.5c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.8c-5.8 0-8.7-7-4.6-11.1l62.4-62.7z" fill="url(#paint0_linear)"/>
-                    <defs>
-                        <linearGradient id="paint0_linear" x1="56.7766" y1="50.4828" x2="333.642" y2="283.475" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#00F0FF"/>
-                            <stop offset="1" stop-color="#00F0FF"/>
-                        </linearGradient>
-                    </defs>
-                </svg>
-                <div class="sol-text-col">
-                    <span class="sol-small">Download on</span>
-                    <span class="sol-large">Solana dApp Store</span>
+            <a href="#" class="unified-btn coming-soon-trigger">
+                <div class="solana-content">
+                    <svg class="sol-icon" viewBox="0 0 397 313" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M64.6 237.9c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.8c-5.8 0-8.7-7-4.6-11.1l62.4-62.7zM332.4 75.1c-2.4 2.4-5.7 3.8-9.2 3.8H5.8c-5.8 0-8.7-7-4.6-11.1L63.9 5.1c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7zM64.6 121.5c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.8c-5.8 0-8.7-7-4.6-11.1l62.4-62.7z" fill="url(#paint0_linear)"/>
+                        <defs>
+                            <linearGradient id="paint0_linear" x1="56.7766" y1="50.4828" x2="333.642" y2="283.475" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#00F0FF"/>
+                                <stop offset="1" stop-color="#00F0FF"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="sol-text-col">
+                        <span class="sol-small">Download on</span>
+                        <span class="sol-large">Solana dApp Store</span>
+                    </div>
                 </div>
             </a>
 
@@ -278,7 +337,6 @@
     <footer>
         <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#section-footer">Products</a></li>
             <li><a href="solanacards.html">Finora Cards</a></li>
             <li><a href="about.html">About Us</a></li>
         </ul>
@@ -379,13 +437,40 @@
               .to("#animate-h1", { y: 0, opacity: 1, duration: 1 }, "-=0.5")
               .to("#animate-p", { y: 0, opacity: 1, duration: 1 }, "-=0.7")
               .to(".badge-group", { opacity: 1, duration: 0.5 }, "-=0.5")
-              // Updated selector to include the new custom button in the animation
-              .from(".badge-link, .solana-custom-btn", { 
+              .from(".unified-btn", { 
                   y: 30, opacity: 0, stagger: 0.1, ease: "back.out(1.7)", duration: 0.8 
               }, "-=0.3")
               .to("#animate-qr", { scale: 1, opacity: 1, y: 0, duration: 1 }, "-=0.5");
 
             gsap.to("#animate-qr", { y: -10, duration: 2.5, repeat: -1, yoyo: true, ease: "sine.inOut" });
+
+            /* ============================================================
+               START TEMPORARY FEATURE: JS FOR NOTIFICATION
+               (App Launch Hone par niche wala pura block delete kar dein)
+               ============================================================ */
+            const buttons = document.querySelectorAll('.coming-soon-trigger');
+            const toast = document.getElementById('toast-notification');
+            let toastTimeout;
+
+            buttons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault(); // Stop Link Navigation
+
+                    // Show Toast
+                    toast.classList.add('active');
+
+                    // Clear previous timer if clicked again rapidly
+                    clearTimeout(toastTimeout);
+
+                    // Auto hide after 3 seconds
+                    toastTimeout = setTimeout(() => {
+                        toast.classList.remove('active');
+                    }, 4000);
+                });
+            });
+            /* ============================================================
+               END TEMPORARY FEATURE JS
+               ============================================================ */
         });
     </script>
 </body>

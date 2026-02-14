@@ -431,15 +431,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     /* --- FONT IMPORT --- */
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&display=swap');
 
-    /* --- 1. NAVBAR DECORATION (Border Removed) --- */
+    /* --- 1. NAVBAR --- */
     .navbar {
-        background-color: rgba(5, 5, 10, 0.9) !important;
-        backdrop-filter: blur(12px) !important;
-        -webkit-backdrop-filter: blur(12px);
-        
-        /* UPDATE: Border hata diya hai */
+        background-color: rgba(5, 5, 10, 0.95) !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px);
         border-bottom: none !important; 
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Thoda sa shadow taake alag lage */
+        box-shadow: 0 10px 40px rgba(0,0,0,0.6);
     }
 
     /* --- 2. LINKS STYLE --- */
@@ -450,22 +448,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         text-transform: uppercase;
         letter-spacing: 1px;
         transition: all 0.3s ease;
-        position: relative; /* Zaruri hai */
+        position: relative;
+        text-decoration: none;
+        display: inline-block;
+        padding: 5px 0;
+        cursor: pointer;
     }
 
-    .nav-link:hover {
+    .nav-link:hover, .nav-link.active-link {
         color: #ffffff !important;
-        text-shadow: 0 0 8px #ff00cc, 0 0 15px #00f0ff !important;
+        text-shadow: 0 0 10px #ff00cc, 0 0 20px #00f0ff !important;
     }
 
-    /* --- 3. LASER LINE (Gap Adjusted) --- */
+    /* Laser Line */
     .nav-link::after {
         content: '';
         position: absolute;
-        
-        /* UPDATE: Text se doori badha di (Minus value neeche le jati hai) */
-        bottom: -8px; 
-        
+        bottom: -2px; 
         left: 50%;
         transform: translateX(-50%);
         width: 0%; 
@@ -478,6 +477,86 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     .nav-link:hover::after {
         width: 100%;
+    }
+
+    /* --- 3. PROFESSIONAL DROPDOWN (Mobile & Desktop) --- */
+    
+    .dropdown-wrapper {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    /* The Menu Box */
+    .dropdown-content {
+        display: none; /* Default Hidden */
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #0d0d12; /* Deep Black/Blue */
+        min-width: 200px;
+        padding: 10px 0;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.9);
+        border: 1px solid rgba(0, 240, 255, 0.2);
+        border-top: 3px solid #00f0ff; /* Neon Bar on Top */
+        border-radius: 0 0 8px 8px;
+        z-index: 99999;
+        text-align: left;
+        margin-top: 10px;
+    }
+
+    /* Mobile / Click State Class (Javascript se activate hoga) */
+    .dropdown-content.show-menu {
+        display: block !important;
+        animation: fadeIn 0.3s ease forwards;
+    }
+
+    /* Desktop Hover State */
+    @media (min-width: 992px) {
+        .dropdown-wrapper:hover .dropdown-content {
+            display: block;
+            animation: fadeIn 0.3s ease forwards;
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+        to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
+    /* Links inside Dropdown */
+    .dropdown-item {
+        color: #b0b0b0;
+        padding: 12px 20px;
+        text-decoration: none;
+        display: block;
+        font-family: 'Rajdhani', sans-serif;
+        font-weight: 600;
+        font-size: 15px;
+        text-transform: uppercase;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+    }
+
+    .dropdown-item:hover {
+        background: linear-gradient(90deg, rgba(0, 240, 255, 0.1), transparent);
+        color: #fff;
+        border-left: 3px solid #00f0ff;
+        padding-left: 25px;
+        text-shadow: 0 0 8px rgba(0, 240, 255, 0.8);
+    }
+
+    /* Arrow Icon Styling */
+    .arrow-icon {
+        font-size: 10px; 
+        margin-left: 5px; 
+        transition: transform 0.3s; 
+        display: inline-block;
+    }
+    
+    .show-menu ~ .nav-link .arrow-icon {
+        transform: rotate(180deg);
     }
 
     /* --- 4. BUTTON STYLE --- */
@@ -498,40 +577,97 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
     }
 </style>
-    <div>
-        <div data-animation="over-right" data-collapse="tiny" data-duration="400" data-easing="ease" data-easing2="ease" data-doc-height="1" role="banner" class="navbar w-nav">
-            <div class="padding-global">
-                <div class="w-layout-blockcontainer container-large w-container">
-                    <div class="nav"><a href="/?r=0" aria-current="page" class="nav-logo track-nav-logo w-inline-block w--current"><img src="assets/contents/finoralogo.png" alt="Finora Logo" style="height:200px; width:180px;"></a>
-                        <div
-                            data-hover="false" data-delay="0" data-w-id="8d270df1-3a8c-3f7f-8858-c7056f4f69f2" class="header_dd w-dropdown">
-                            <div class="header_dd_toggle w-dropdown-toggle">
-                                <div class="header_dd_toggle_inner">
-                                    <div class="toggle-bar is-top"></div>
-                                    <div class="toggle-bar is-mid"></div>
-                                    <div class="toggle-bar is-btm"></div>
-                                </div>
+
+<div>
+    <div data-animation="over-right" data-collapse="tiny" data-duration="400" role="banner" class="navbar w-nav">
+        <div class="padding-global">
+            <div class="w-layout-blockcontainer container-large w-container">
+                <div class="nav">
+                    
+                    <a href="/?r=0" aria-current="page" class="nav-logo track-nav-logo w-inline-block w--current">
+                        <img src="assets/contents/finoralogo.png" alt="Finora Logo" style="height:200px; width:180px;">
+                    </a>
+
+                    <div class="header_dd w-dropdown">
+                        <div class="header_dd_toggle w-dropdown-toggle">
+                            <div class="header_dd_toggle_inner">
+                                <div class="toggle-bar is-top"></div>
+                                <div class="toggle-bar is-mid"></div>
+                                <div class="toggle-bar is-btm"></div>
                             </div>
-                            <nav class="header_dd_menu w-dropdown-list">
-                                <div class="padding-global">
-                                    <div class="header_dd_menu_inner">
-                                        <div class="header_dd_nav-links-wrp"><a href="index.html" class="nav-link track-nav-link">Home</a><a href="#section-footer" class="nav-link track-nav-link">Products</a><a href="solanacards.html" class="nav-link track-nav-link">Finora Cards</a><a href="about.html" class="nav-link track-nav-link">About us</a></div>
-                                        <div
-                                            class="header_dd_app-link_flex"><a href="https://apps.apple.com/sg/app/kast-finance/id6479701765" target="_blank" class="header_dd_app-link track-appstore w-inline-block"><img src="https://cdn.prod.website-files.com/660c048ecf246f8d15a85d0a/6682b35a802bf3614f1d8fd9_9ae2ddc9bc70eee9a9b2f7377fce1b56_App%20Store%20Button.webp" loading="lazy" alt="Download on the App Store"/></a>
-                                            <a
-                                                href="https://play.google.com/store/apps/details?id=com.kastfinance.app" target="_blank" class="header_dd_app-link track-appstore w-inline-block"><img src="https://cdn.prod.website-files.com/660c048ecf246f8d15a85d0a/669f73be01208385dc730f1e_055e8227abedfefec5062a7cd2672a78_Google%20Play.webp" loading="lazy" alt="Get Google Play" /></a>
+                        </div>
+                        
+                        <nav class="header_dd_menu w-dropdown-list">
+                            <div class="padding-global">
+                                <div class="header_dd_menu_inner">
+                                    <div class="header_dd_nav-links-wrp">
+                                        
+                                        <a href="index.html" class="nav-link track-nav-link">Home</a>
+                                        
+                                        <div class="dropdown-wrapper">
+                                            <a href="javascript:void(0)" onclick="toggleProducts()" id="productsLink" class="nav-link track-nav-link">
+                                                Products <span class="arrow-icon">▼</span>
+                                            </a>
+                                            
+                                            <div id="productsMenu" class="dropdown-content">
+                                                <a href="solanacards.html" class="dropdown-item">Crypto Cards</a>
+                                                <a href="Global Accounts.html" class="dropdown-item">Global Accounts</a>
+                                                <a href="Global Payouts.html" class="dropdown-item">Global Payouts</a>
+                                            </div>
+                                        </div>
+
+                                        <a href="solanacards.html" class="nav-link track-nav-link">Finora Cards</a>
+                                        
+                                        <a href="about.html" class="nav-link track-nav-link">About us</a>
+                                    
+                                    </div>
+
+                                    <div class="header_dd_app-link_flex">
+                                        <a href="https://apps.apple.com/sg/app/kast-finance/id6479701765" target="_blank" class="header_dd_app-link track-appstore w-inline-block"><img src="https://cdn.prod.website-files.com/660c048ecf246f8d15a85d0a/6682b35a802bf3614f1d8fd9_9ae2ddc9bc70eee9a9b2f7377fce1b56_App%20Store%20Button.webp" loading="lazy" alt="Download on the App Store"/></a>
+                                        <a href="https://play.google.com/store/apps/details?id=com.kastfinance.app" target="_blank" class="header_dd_app-link track-appstore w-inline-block"><img src="https://cdn.prod.website-files.com/660c048ecf246f8d15a85d0a/669f73be01208385dc730f1e_055e8227abedfefec5062a7cd2672a78_Google%20Play.webp" loading="lazy" alt="Get Google Play" /></a>
                                     </div>
                                 </div>
+                            </div>
+                        </nav>
                     </div>
-                    </nav>
+
+                    <a data-w-id="8d270df1-3a8c-3f7f-8858-c7056f4f6a08" href="DownloadFinoraApp.html" target="_blank" class="button is-secondary is-small nav_button app-download-btn track-appstore w-inline-block">
+                        <div>Get the Finora app</div>
+                    </a>
+
                 </div>
-                <a data-w-id="8d270df1-3a8c-3f7f-8858-c7056f4f6a08" href="DownloadFinoraApp.html" target="_blank" class="button is-secondary is-small nav_button app-download-btn track-appstore w-inline-block">
-                    <div>Get the Finora app</div>
-                </a>
             </div>
         </div>
     </div>
-    </div>
+</div>
+
+<script>
+    function toggleProducts() {
+        var menu = document.getElementById("productsMenu");
+        var link = document.getElementById("productsLink");
+        
+        // Toggle the class 'show-menu'
+        if (menu.classList.contains("show-menu")) {
+            menu.classList.remove("show-menu");
+            link.classList.remove("active-link");
+        } else {
+            menu.classList.add("show-menu");
+            link.classList.add("active-link");
+        }
+    }
+
+    // Close menu when clicking anywhere else on screen
+    document.addEventListener('click', function(event) {
+        var isClickInside = document.querySelector('.dropdown-wrapper').contains(event.target);
+        var menu = document.getElementById("productsMenu");
+        var link = document.getElementById("productsLink");
+
+        if (!isClickInside && menu.classList.contains("show-menu")) {
+            menu.classList.remove("show-menu");
+            link.classList.remove("active-link");
+        }
+    });
+</script>
 
    
 <div
@@ -2134,15 +2270,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <div class="magic-column">
                             <center> <div class="text-neon-header">Get the App</div></center>
                             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-                                <a href="#" class="app-btn-link track-appstore">
+                                <a href="DownloadFinoraApp.html" class="app-btn-link track-appstore">
                                     <img src="https://cdn.prod.website-files.com/660c048ecf246f8d15a85d0a/6682b35a802bf3614f1d8fd9_9ae2ddc9bc70eee9a9b2f7377fce1b56_App%20Store%20Button.webp" width="140" style="border-radius: 8px;">
                                 </a>
-                                <a href="#" class="app-btn-link track-appstore">
+                                <a href="DownloadFinoraApp.html" class="app-btn-link track-appstore">
                                     <img src="https://cdn.prod.website-files.com/660c048ecf246f8d15a85d0a/669f73be01208385dc730f1e_055e8227abedfefec5062a7cd2672a78_Google%20Play.webp" width="140" style="border-radius: 8px;">
                                 </a>
-                                <a href="#" class="app-btn-link solana-custom-btn track-appstore">
+                                <a href="DownloadFinoraApp.html" class="app-btn-link solana-custom-btn track-appstore">
                                     <svg class="sol-icon" viewBox="0 0 397 313" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M64.6 237.9c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.8c-5.8 0-8.7-7-4.6-11.1l62.4-62.7zM332.4 75.1c-2.4 2.4-5.7 3.8-9.2 3.8H5.8c-5.8 0-8.7-7-4.6-11.1L63.9 5.1c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7zM64.6 121.5c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.8c-5.8 0-8.7-7-4.6-11.1l62.4-62.7z" fill="url(#paint0_linear)"/>
+                                        <path d="M64.6 237.9c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.8c-5.8 0-8.7-7-4.6-11.1l62.4-62.7zM332.4 75.1c-2.4 2.4-5.7 3.8-9.2 3.8H5.8c-5.8 0-8.7-7-4.6-11.1L63.9 5.1c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.l -62 .7zM64 .6,121 .5c2 .4 -2 .4 -5 .7 -9 .2 -9 .2 -9 .2H6 .8c -5 .8 -8 .7 -4 .6l62 .4z" fill="url(#paint0_linear)"/>
                                         <defs>
                                             <linearGradient id="paint0_linear" x1="56.7766" y1="50.4828" x2="333.642" y2="283.475" gradientUnits="userSpaceOnUse">
                                                 <stop stop-color="#00F0FF"/>
